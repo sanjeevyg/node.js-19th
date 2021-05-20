@@ -6,6 +6,21 @@ const config = require('./knexfile')["development"]
 const database = knex(config)
 
 
+app.get("/dogs", (request, response) => {
+    database("dogs").select()
+        .then(dogs => {
+            response.json({ dogs }) 
+        })
+})
+
+app.get("/dogs/:id", (request, response) => {
+    database("dogs").select().where({ id: request.params.id }).first()
+        .then(dog => {
+            response.json({ dog })
+        })
+    })
+
+
 const port = 5000 
 
 app.listen(port, () => {
