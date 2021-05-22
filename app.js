@@ -18,13 +18,12 @@ app.get('/dogs', (request, response) => {
 
 app.get('/dogs/:id', (request, response) => {
     database('dogs').select().where({ id: request.params.id }).first()
-        .then( dog => {
-            response.json({ dog })
-        })
+        .then( dog => response.send(dog))
 })
 
 app.post('/dogs', (request, response) => {
     const dog = request.body
+    console.log(dog)
     database('dogs')
         .insert(dog)
         .returning('*')

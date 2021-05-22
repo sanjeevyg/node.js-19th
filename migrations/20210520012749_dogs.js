@@ -1,3 +1,4 @@
+const { default: knex } = require("knex");
 
 exports.up = function(knex) {
   return knex.schema.createTable("dogs", dogs => {
@@ -11,3 +12,11 @@ exports.up = function(knex) {
 exports.down = function(knex) {
   return knex.schema.dropTableIfExists("dogs")
 };
+
+
+
+
+
+
+
+
