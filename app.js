@@ -27,9 +27,7 @@ app.post('/dogs', (request, response) => {
     database('dogs')
         .insert(dog)
         .returning('*')
-        .then(dog => {
-            response.json({ dog })
-        })
+        .then(dog => response.send(dog))
 })
 
 
